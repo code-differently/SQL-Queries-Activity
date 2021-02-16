@@ -39,3 +39,18 @@
 -- SELECT firstName, lastName FROM employees WHERE officeCode = (SELECT officeCode FROM offices WHERE city = 'Tokyo');
 -- customer name and phone where credit limit is 650+ and salesrepnum is 1165
 -- SELECT customerName, phone FROM customers WHERE creditLimit >= 650 AND salesRepEmployeeNumber = 1165;
+-- sales by sales rep
+-- SELECT employees.employeeNumber, employees.lastName, employees.firstName, 
+	-- customers.customerNumber, customers.customerName, 
+    -- payments.amount 
+	-- FROM employees LEFT OUTER JOIN customers ON employees.employeeNumber = customers.salesRepEmployeeNumber
+    -- LEFT OUTER JOIN payments ON customers.customerNumber = payments.customerNumber 
+    -- ORDER BY payments.amount DESC, employees.lastName, employees.firstName;
+-- total sales by sales rep
+SELECT employees.employeeNumber, employees.lastName, employees.firstName, 
+	customers.customerNumber, customers.customerName, 
+    SUM(payments.amount) AS "Total Sales"
+	FROM employees LEFT OUTER JOIN customers ON employees.employeeNumber = customers.salesRepEmployeeNumber
+    LEFT OUTER JOIN payments ON customers.customerNumber = payments.customerNumber 
+    GROUP BY employees.lastName
+    ORDER BY payments.amount DESC, employees.lastName, employees.firstName;
