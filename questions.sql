@@ -6,20 +6,6 @@
 -- SELECT * FROM customers WHERE city IN ('Reims', 'Genève');
 -- which customers were served by Larry Bott
 -- SELECT * FROM customers WHERE salesRepEmployeeNumber = (SELECT employeeNumber FROM employees WHERE firstName = 'Larry' AND lastName = 'Bott');
--- SELECT * FROM customers LIMIT 5;
--- customerNumber | customerName | contactLastName | contactFirstName | phone | addressLine1 | addressLine2 | city | state | postalCode | country | salesRepEmployeeNumber | creditLimit
--- SELECT * FROM offices LIMIT 5;
--- officeCode | city | phone | addressLine1 | addressLine2 | state | country | postalCode | territory
--- SELECT * FROM orderdetails LIMIT 5;
--- orderNumber | productCode | quantityOrdered | priceEach | orderLineNumber
--- SELECT * FROM orders LIMIT 5;
--- orderNumber | orderDate | requiredDate | shippedDate | status | comments | customerNumber
--- SELECT * FROM payments LIMIT 5;
--- customerNumber | checkNumber | paymentDate | amount
--- SELECT * FROM productlines LIMIT 5;
--- productLine | textDescription | htmlDescription | image
--- SELECT * FROM products LIMIT 5; 
--- productCode, productName, productLine, productScale, productVendor, productDescription, quantityInStock, buyPrice, MSRP
 -- select all customers whose orders are more than 50% of their credit limit
 -- SELECT customerName, contactFirstName, contactLastName, creditLimit FROM customers WHERE customerNumber IN (SELECT customerNumber FROM payments WHERE amount > (customers.creditLimit / 2));
 -- show all customers whose credit limit is between 100,000 and 200,000
@@ -47,10 +33,19 @@
     -- LEFT OUTER JOIN payments ON customers.customerNumber = payments.customerNumber 
     -- ORDER BY payments.amount DESC, employees.lastName, employees.firstName;
 -- total sales by sales rep
+-- SELECT employees.employeeNumber, employees.lastName, employees.firstName, 
+	-- customers.customerNumber, customers.customerName, 
+    -- SUM(payments.amount) AS "Total Sales"
+	-- FROM employees LEFT OUTER JOIN customers ON employees.employeeNumber = customers.salesRepEmployeeNumber
+    -- LEFT OUTER JOIN payments ON customers.customerNumber = payments.customerNumber 
+    -- GROUP BY employees.lastName
+    -- ORDER BY payments.amount DESC, employees.lastName, employees.firstName;
+-- total sales by sales rep in tokyo / ny offices
 SELECT employees.employeeNumber, employees.lastName, employees.firstName, 
 	customers.customerNumber, customers.customerName, 
     SUM(payments.amount) AS "Total Sales"
 	FROM employees LEFT OUTER JOIN customers ON employees.employeeNumber = customers.salesRepEmployeeNumber
     LEFT OUTER JOIN payments ON customers.customerNumber = payments.customerNumber 
+    WHERE employees.officeCode IN (SELECT officeCode FROM offices WHERE city IN ('Tokyo', 'NYC'))
     GROUP BY employees.lastName
     ORDER BY payments.amount DESC, employees.lastName, employees.firstName;
