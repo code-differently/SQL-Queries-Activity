@@ -1,0 +1,7 @@
+ question 1)  Get customers that have a "r" in their last name, a "p" in their first name and who's sales rep employee number is null.
+
+ answer 1)  SELECT * FROM customers WHERE contactLastName LIKE "%r%" AND contactFirstName LIKE "%p%" AND salesRepEmployeeNumber IS NULL;
+
+ question 2) Get customers where they have a "7" in the customer number, customer name contains an "i" and postal code contains a "5".
+
+ answer 2) SELECT * FROM customers WHERE customerNumber LIKE "%7%" AND customerName Like "%i%" AND postalCode LIKE "%5%";
