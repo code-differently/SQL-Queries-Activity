@@ -40,3 +40,4 @@ Open the attached file in MySQLWorkbench and execute
 
 ## Submission
 Create a pull request containing all the questions and answers
+

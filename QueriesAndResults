@@ -1,0 +1,54 @@
+SELECT customerName 
+FROM employees
+WHERE customerNumber = 114;
+
+-- Australian Collectors, Co.
+
+SELECT * 
+FROM employees
+WHERE jobTitle LIKE 'VP%';
+
+-- '1056','Patterson','Mary','x4611','mpatterso@classicmodelcars.com','1','1002','VP Sales'
+-- '1076','Firrelli','Jeff','x9273','jfirrelli@classicmodelcars.com','1','1002','VP Marketing'
+
+SELECT checkNumber, amount
+FROM payments
+WHERE amount > 95000
+ORDER BY amount desc;
+
+/*
+'JE105477','120166.58'
+'ID10962','116208.40'
+'KI131716','111654.40'
+'KM172879','105743.00'
+'AE215433','101244.59'
+*/
+
+SELECT productLine as 'Product Line', textDescription AS 'Text Description'
+FROM productlines
+WHERE textDescription LIKE '%CAR%';
+
+/*
+'Classic Cars','Attention car enthusiasts: Make your wildest car ownership dreams come true. Whether you are looking for classic muscle cars, dream sports cars or movie-inspired miniatures, you will find great choices in this category. These replicas feature superb attention to detail and craftsmanship and offer features such as working steering system, opening forward compartment, opening rear trunk with removable spare wheel, 4-wheel independent spring suspension, and so on. The models range in size from 1:10 to 1:24 scale and include numerous limited edition and several out-of-production vehicles. All models include a certificate of authenticity from their manufacturers and come fully assembled and ready for display in the home or office.',NULL,?
+'Trains','Model trains are a rewarding hobby for enthusiasts of all ages. Whether you\'re looking for collectible wooden trains, electric streetcars or locomotives, you\'ll find a number of great choices for any budget within this category. The interactive aspect of trains makes toy trains perfect for young children. The wooden train sets are ideal for children under the age of 5.',NULL,?
+'Vintage Cars','Our Vintage Car models realistically portray automobiles produced from the early 1900s through the 1940s. Materials used include Bakelite, diecast, plastic and wood. Most of the replicas are in the 1:18 and 1:24 scale sizes, which provide the optimum in detail and accuracy. Prices range from $30.00 up to $180.00 for some special limited edition replicas. All models include a certificate of authenticity from their manufacturers and come fully assembled and ready for display in the home or office.',NULL,?
+*/
+
+SELECT * 
+FROM orders
+WHERE comments IS NOT NULL AND status LIKE 'Cancel%'
+ORDER BY requiredDate;
+
+/*
+'10167','2003-10-23','2003-10-30',NULL,'Cancelled','Customer called to cancel. The warehouse was notified in time and the order didn\'t ship. They have a new VP of Sales and are shifting their sales model. Our VP of Sales should contact them.','448'
+'10179','2003-11-11','2003-11-17','2003-11-13','Cancelled','Customer cancelled due to urgent budgeting issues. Must be cautious when dealing with them in the future. Since order shipped already we must discuss who would cover the shipping charges.','496'
+'10248','2004-05-07','2004-05-14',NULL,'Cancelled','Order was mistakenly placed. The warehouse noticed the lack of documentation.','131'
+'10253','2004-06-01','2004-06-09','2004-06-02','Cancelled','Customer disputed the order and we agreed to cancel it. We must be more cautions with this customer going forward, since they are very hard to please. We must cover the shipping fees.','201'
+'10260','2004-06-16','2004-06-22',NULL,'Cancelled','Customer heard complaints from their customers and called to cancel this order. Will notify the Sales Manager.','357'
+'10262','2004-06-24','2004-07-01',NULL,'Cancelled','This customer found a better offer from one of our competitors. Will call back to renegotiate.','141'
+
+*/
+
+
+
+
