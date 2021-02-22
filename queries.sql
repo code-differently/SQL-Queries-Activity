@@ -1,0 +1,10 @@
+-- Find All customers
+-- -- SELECT * FROM customers;
+-- Find customers live in Philly
+-- -- select * from customers where city = "Philadelphia";
+-- Find Customer last name is smith
+-- select * from customers where contactLastName = "smith";
+-- Find customers credit limit is 100k - 200k
+-- SELECT * FROM customers WHERE creditLimit BETWEEN 100000 AND 200000;
+-- How many customers without numbers
+-- select count(*) from customers where phone = null;
