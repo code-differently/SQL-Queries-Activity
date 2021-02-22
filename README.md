@@ -5,15 +5,39 @@ You will be playing a game amoungst your teammates and instructor(s). The goal i
 
 ## Concepts
 * Querying a table
+
+SELECT * FROM TABLE
+
 * Aliasing columns
+
+SELECT columnName AS "Column Name" FROM TABLE
+
 * Filtering
     * Comparisons
     * Range
     * Pattern Matching
+
+SELECT *
+FROM TABLE
+WHERE ID > 100
+
+SELECT *
+FROM TABLE
+WHERE fieldName LIKE "Person"
+
+SELECT * 
+FROM TABLE
+WHERE fieldName LIKE "John S%"
+
 * NULL values
+
+SELECT *
+FROM TABLE
+WHERE fieldName IS NULL
 
 ## Setup
 Open the attached file in MySQLWorkbench and execute
 
 ## Submission
 Create a pull request containing all the questions and answers
+
