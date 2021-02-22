@@ -1,0 +1,17 @@
+    
+    -- select customers which zipcode is exactly 5 digit long and state is not null
+    SELECT *,
+    CHAR_LENGTH(postalCode)
+    FROM customers
+    WHERE CHAR_LENGTH(postalCode)=5 AND state IS NOT NULL;
+
+    -- select the full name and email addresses of all VPs.
+    SELECT firstName, 
+    lastName, 
+    email, 
+    jobTitle 
+    FROM employees WHERE jobTitle LIKE "VP%";
+
+    --  select  all customers that are not from JAPAN
+    SELECT * FROM customers 
+    WHERE country NOT IN ('JAPAN');
