@@ -1,0 +1,11 @@
+USE classicmodels;
++ -- from the employees table find all info about job titles that have the word manager in them.
+SELECT * FROM employees WHERE jobtitle LIKE "%manager%";
++ -- from customers table find all info about customers in Japan and order them by credit limit from smallest to largest.
+SELECT * FROM customers WHERE country = "Japan" ORDER BY creditLimit ASC;
++ -- from customers find all info about customers in Liverpool, UK
+SELECT * FROM customers WHERE city = "liverpool" and country = "UK";
++ -- from customers table find all info about customers in USA with the credit limit 0 and match data with their corresponding numbers.
+SELECT * FROM orders, customers WHERE country = "USA" AND creditLimit = 0;
++ -- from orders table find all info about orders that have information in their commets section, order them my required date.
+SELECT * FROM orders WHERE NOT comments = "NULL" ORDER BY requiredDate;
