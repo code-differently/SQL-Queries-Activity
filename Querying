@@ -1,0 +1,26 @@
+USE `classicmodels`;
+Select* from customers;
+-- Aliasing columns:
+SELECT contactLastName AS LastName , contactFirstName  AS FirstName
+FROM customers;
+-- * Filtering
+   -- Comparisons, Range, Pattern Matching
+Select customerName FROM customers WHERE country LIKE 'Spain';
+Select contactFirstName FROM customers WHERE creditLimit >= '81700.00';
+SELECT customerNumber FROM customers WHERE creditLimit BETWEEN 95000 AND 118200;
+-- * NULL values
+SELECT customerName FROM customers WHERE state IS NULL;
+-- Creat table :
+CREATE TABLE `addressInfo` (
+  `customerNumber` int(11) PRIMARY KEY NOT NULL,
+  `customerName` varchar(50) NOT NULL,
+  `LastName` varchar(50) NOT NULL,
+  `FirstName` varchar(50) NOT NULL,
+  `phone` varchar(50) NOT NULL,
+  `address1` varchar(50) NOT NULL,
+  `address2` varchar(50) DEFAULT NULL,
+  `city` varchar(50) NOT NULL,
+  `state` varchar(50) DEFAULT NULL,
+  `postalCode` varchar(15) DEFAULT NULL,
+  `country` varchar(50) NOT NULL);
+  Select* from addressInfo;
